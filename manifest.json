@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "Momcare Anemia: Aplikasi pendamping ibu hamil cegah anemia",
+  "short_name": "Momcare",
+  "description": "Aplikasi pendamping untuk membantu ibu hamil dalam mencegah anemia melalui pemantauan kesehatan dan edukasi.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e91e63",
+  "orientation": "portrait",
+  "lang": "id-ID",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

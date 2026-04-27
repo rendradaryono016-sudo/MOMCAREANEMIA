@@ -1,0 +1,14 @@
+{
+  "name": "momcare-anemia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MOMCARE ANEMIA web app with Supabase backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}

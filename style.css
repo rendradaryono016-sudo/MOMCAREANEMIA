@@ -1,0 +1,214 @@
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: #FFF0F5;
+  overflow: hidden;
+}
+
+/* ===== APP SHELL ===== */
+.app-shell {
+  height: 100dvh; width: 100%; overflow: hidden;
+  display: flex; flex-direction: column;
+  max-width: 100%; margin: 0 auto;
+  background: #FFF0F5; position: relative;
+}
+.page {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.page::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* ===== ANIMATIONS ===== */
+.fade-in { animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes loadingBar { 0% { width: 0%; } 40% { width: 60%; } 70% { width: 80%; } 100% { width: 100%; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== LOADING SCREEN ===== */
+.loading-screen {
+  position: fixed; inset: 0; background: linear-gradient(160deg, #FFF0F5 0%, #FFD6E7 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 999; transition: opacity .5s ease;
+}
+.loading-screen.hide { opacity: 0; pointer-events: none; }
+.loading-logo {
+  width: 90px; height: 90px; border-radius: 24px;
+  background: linear-gradient(135deg, #F8A4C8, #E8739E);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(232,115,158,.35);
+  animation: pulse 1.5s ease infinite;
+  overflow: hidden;
+}
+.loading-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.auth-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(232, 115, 158, 0.24);
+  margin-bottom: 10px;
+}
+.loading-title {
+  font-size: 26px; font-weight: 800; color: #D4508A; margin-bottom: 6px;
+}
+.loading-sub { font-size: 13px; color: #A88A9A; margin-bottom: 36px; }
+.loading-bar-wrap {
+  width: 200px; height: 6px; background: #FFD6E7;
+  border-radius: 3px; overflow: hidden;
+}
+.loading-bar-fill {
+  height: 100%; background: linear-gradient(90deg, #F8A4C8, #E8739E);
+  border-radius: 3px; animation: loadingBar 1.8s ease forwards;
+}
+
+/* ===== SPINNER ===== */
+.spinner {
+  width: 24px; height: 24px;
+  border: 3px solid #FFD6E7; border-top-color: #E8739E;
+  border-radius: 50%; animation: spin .6s linear infinite; margin: 0 auto;
+}
+
+/* ===== NAV ===== */
+.nav-btn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 2px; padding: 6px 0; font-size: 11px; color: #A88A9A; transition: all .2s;
+  background: none; border: none; cursor: pointer; font-family: 'Nunito', sans-serif;
+}
+.nav-btn.active { color: #D4508A; }
+.nav-dot { width: 4px; height: 4px; background: #D4508A; border-radius: 50%; }
+
+/* ===== CARD ===== */
+.card {
+  background: #fff; border-radius: 16px; padding: 16px;
+  box-shadow: 0 2px 12px rgba(212,80,138,.08);
+}
+
+/* ===== BUTTONS ===== */
+.btn-pink {
+  background: linear-gradient(135deg, #F8A4C8, #E8739E);
+  color: #fff; border: none; border-radius: 12px;
+  padding: 12px 24px; font-weight: 700;
+  font-family: 'Nunito', sans-serif; cursor: pointer;
+  transition: all .2s; font-size: 15px;
+}
+.btn-pink:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,115,158,.3); }
+.btn-outline {
+  background: transparent; color: #D4508A;
+  border: 2px solid #FFD6E7; border-radius: 12px;
+  padding: 10px 24px; font-weight: 700;
+  font-family: 'Nunito', sans-serif; cursor: pointer;
+  transition: all .2s; font-size: 15px;
+}
+.btn-ghost {
+  background: none; border: none; color: #D4508A;
+  font-family: 'Nunito', sans-serif; font-size: 13px;
+  font-weight: 700; cursor: pointer; text-decoration: underline;
+  padding: 4px 0;
+}
+
+/* ===== FORM INPUTS ===== */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  width: 100%; padding: 11px 14px;
+  border: 2px solid #FFD6E7; border-radius: 10px;
+  font-family: 'Nunito', sans-serif; font-size: 14px;
+  color: #4A3040; outline: none; transition: border .2s; background: #fff;
+}
+input:focus { border-color: #F8A4C8; }
+
+/* ===== AUTH TABS ===== */
+.auth-tab-wrap {
+  display: flex; background: #FFF0F5; border-radius: 12px;
+  padding: 4px; margin-bottom: 20px;
+}
+.auth-tab {
+  flex: 1; padding: 9px; border: none; border-radius: 9px;
+  font-family: 'Nunito', sans-serif; font-size: 14px;
+  font-weight: 700; cursor: pointer; transition: all .2s; color: #A88A9A;
+  background: transparent;
+}
+.auth-tab.active { background: #fff; color: #D4508A; box-shadow: 0 2px 8px rgba(212,80,138,.12); }
+
+/* ===== CHECK ITEMS ===== */
+.check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; background: #FFF0F5; border-radius: 10px;
+  margin-bottom: 8px; cursor: pointer; transition: all .15s; user-select: none;
+}
+.check-item:hover { background: #FFD6E7; }
+.check-item.checked { background: #FFD6E7; }
+.check-box {
+  width: 22px; height: 22px; border-radius: 6px;
+  border: 2px solid #F8A4C8; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; transition: all .15s;
+}
+.check-item.checked .check-box { background: #E8739E; border-color: #E8739E; }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(74,48,64,.4);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 50; padding: 20px;
+}
+
+/* ===== PROGRESS ===== */
+.progress-bar { height: 8px; background: #FFD6E7; border-radius: 4px; overflow: hidden; }
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, #F8A4C8, #E8739E);
+  border-radius: 4px; transition: width .5s ease;
+}
+
+/* ===== EDU CARD ===== */
+.edu-card {
+  background: #fff; border-radius: 14px; padding: 14px;
+  box-shadow: 0 2px 8px rgba(212,80,138,.06); border: 1px solid #FFD6E7;
+}
+
+/* ===== TAB BUTTONS ===== */
+.tab-btn {
+  padding: 8px 16px; border-radius: 20px; font-size: 13px;
+  font-weight: 600; cursor: pointer; transition: all .2s;
+  border: none; font-family: 'Nunito', sans-serif;
+}
+.tab-btn.active { background: #E8739E; color: #fff; }
+.tab-btn:not(.active) { background: #FFF0F5; color: #7A5A6A; }
+
+/* ===== FORGOT ACCOUNT PANEL ===== */
+.forgot-panel {
+  background: #FFF0F5; border-radius: 14px; padding: 16px;
+  margin-top: 12px; border: 1px dashed #F8A4C8;
+  animation: slideUp .3s ease;
+}
+
+/* ===== ERROR / SUCCESS MESSAGES ===== */
+.msg-error { color: #E8739E; font-size: 12px; text-align: center; margin-top: 8px; }
+.msg-success { color: #5cb85c; font-size: 12px; text-align: center; margin-top: 8px; }
+
+body { box-sizing: border-box; }
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .app-shell {
+    max-width: 920px;
+    border-radius: 18px;
+  }
+  .card {
+    border-radius: 18px;
+  }
+}
